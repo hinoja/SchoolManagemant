@@ -16,7 +16,7 @@ class AdminController extends Controller
         
         if(!Gate::allows('access-admin',$user))
          {
-             return view('auth.login');
+             return redirect()->view('auth.login');
          }
         return view('admins.layouts.index');
     }
@@ -28,7 +28,7 @@ class AdminController extends Controller
     public function index()
     {
         $model=User::all();
-        // dd(11111111111111);
+ 
         return view('admins.layouts.profile',['table'=>User::all()]);
     }
 

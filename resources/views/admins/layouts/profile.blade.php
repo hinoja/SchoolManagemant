@@ -58,4 +58,8 @@
      @endif
     </tbody>
 </table>
-         {{ $table->links()}}}
+      
+      </div>
+
+@endsection
+   

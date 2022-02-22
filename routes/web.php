@@ -47,6 +47,14 @@ Route::get('/useradmin',function()
    return view('admin');
 })->middleware(['auth'])->name('login.admin');
 
+//  CRUD du cote admin
+// Route::get('CRUD/{id}/edit',[AdminController::class,'edit'])->name('CRUD.edit')->middleware(['auth']);
+// Route::post('CRUD',[AdminController::class,'store'])->name('CRUD.store')->middleware(['auth']);
+// Route::delete('',[AdminController::class,'destroy'])->name('CRUD.destroy')->middleware(['auth']);
+// Route::put('CRUD/{id}',[AdminController::class,'update'])->name('CRUD.update')->middleware(['auth']);
+// Route::get('CRUD/{id}',[AdminController::class,'show'])->name('CRUD.show')->middleware(['auth']);
+
+// Fin dudit CRUD
 
 //Route que j'ai ajouté
  
