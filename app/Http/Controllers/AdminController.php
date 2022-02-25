@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
  
+
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -27,7 +29,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $model=User::all();
+        // $model=User::all();
         // dd(11111111111111);
         return view('admins.layouts.profile',['table'=>User::all()]);
     }
@@ -61,7 +63,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        return view("admins.layouts.show",['item'=>User::find($id)]);
     }
 
     /**
@@ -72,7 +74,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("Edit",['user'=>User::find($id)]);
     }
 
     /**
@@ -84,7 +86,30 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255']           
+        ]);
+        $user= User::find($id);
+         $filename=time().".".$request->image->extension();  
+         $path=$request->image->storeAs(
+             'avatars',
+             $filename,
+             'public'
+          );
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->admin= $request->admin;
+        $user->image= $path;
+        // Storage::disk('local')->put('image',$request->image);
+       // $user->image= $request->image;
+        $user->save();
+       
+
+         
+
+        return redirect() ->route('CRUD.index');
     }
 
     /**
@@ -95,6 +120,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $user=User::find($id);
+        $user->delete();
+        return redirect() ->route('CRUD.index');
     }
 }

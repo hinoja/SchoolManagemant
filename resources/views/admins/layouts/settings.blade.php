@@ -5,4 +5,6 @@
    @section('admin')
        
      settings here...
+
+     
    @endsection

@@ -10,6 +10,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Profile</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Role</th>
@@ -23,8 +24,12 @@
                 <tr>
                      
                     <td> <span class="badge badge-dark">{{ $loop->iteration }}</span></td>
+                    <td>
+                        <img src="{{   Storage::url($user->image)   }}" class="img-circle elevation-2" width="80px" height="50px" alt="User Image">
+                    </td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    
                    <td>   
                   
                             @if (($user->admin==1))
@@ -37,16 +42,21 @@
                         {{-- @if ( Auth::User()->email === $user->email)
                            <span   class="badge badge-success">Administrateur</a>
                         @else
-                            
+                          
                             <span   class="badge badge-danger">Utilistateur</a>
                         @endif --}}
                     </td>
                     <td>{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
                     <td>
-                           
-                              <a class="btn btn-outline-danger" href="{{ route('CRUD.destroy') }}">Delete</a>
-                              <a class="btn btn-outline-primary" href="{{ route('CRUD.edit') }}">Edit</a>
-                              <a class="btn btn-outline-success" href="{{ route('CRUD.show') }}">Show</a>
+                           <form action="{{ route('CRUD.destroy',$user->id)}}" method="POST" style="display: inline" >
+                               @csrf
+                               @method('delete')
+                               <input class="btn btn-outline-danger" type="submit" value="Delete" >
+
+                           </form>
+                             
+                              <a class="btn btn-outline-primary" href="{{ route('CRUD.edit',$user->id) }}">Edit</a>
+                              <a class="btn btn-outline-success" href="{{ route('CRUD.show',$user->id) }}">Show</a>
                             
                     </td>
                 </tr>
@@ -58,4 +68,7 @@
      @endif
     </tbody>
 </table>
-         {{ $table->links()}}}
+         {{-- {{ $table->links()}}} --}}
+
+
+   @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAdminColumnToUsersTable extends Migration
+class AddImageColummUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddAdminColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-           $table->boolean('admin')->default('0')->nullable();
+            $table->text('image')->default(" asset('img/teacher1.jpg') ");
            
         });
     }
