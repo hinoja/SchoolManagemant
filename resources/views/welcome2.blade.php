@@ -103,7 +103,7 @@
         <div class="sidebar">
           <header>Main Menu</header>
           <a href="{{ url('/students')}}" class="active">
-            <i class="fas fa-qrcode"></i>
+   
             <span>Manage Students</span>
           </a>
 
@@ -124,10 +124,13 @@
             <span>LogOut</span>
           </a> --}}
           
-          <a href="#">
-            <i class="fas fa-stream"></i>
-            <span>Overview</span>
+         
+          <a href="#" >
+            <i class="fas fa-user"></i>
+            <span> Edit Profile</span>
           </a>
+        
+
           <a href="#">
             <i class="fas fa-calendar"></i>
             <span>Events</span>
@@ -291,7 +294,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      <a class="text-white" href="#"> Travail Collectif </a>
     </div>
     <!-- Copyright -->
   </footer>
