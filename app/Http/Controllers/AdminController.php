@@ -29,13 +29,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
+
         $model=User::all();
  
-=======
+
         // $model=User::all();
         // dd(11111111111111);
->>>>>>> help
+
         return view('admins.layouts.profile',['table'=>User::all()]);
     }
 
