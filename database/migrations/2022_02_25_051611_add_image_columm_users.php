@@ -14,7 +14,7 @@ class AddImageColummUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('image')->default(" asset('img/teacher1.jpg') ");
+            $table->text('image')->nullable();
            
         });
     }

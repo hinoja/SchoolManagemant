@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PersonnalController;
+use App\Http\Controllers\VisibleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,13 @@ Route:: view('/administrator settings','admins.layouts.settings')->middleware(['
 //Route:: view('/administrator index','admins.layouts.index')->middleware(['auth'])->name('admin.index');
  Route::get('administrator_index',[AdminController::class,'adminTest'])->middleware(['auth'])->name('admin.index');
 //Route que j'ai ajouté
+
+// 
+Route::get('/show user/{id}',[VisibleController::class,'show'])->middleware(['auth'])->name('User.show');
+Route::get('/edit user/{id}',[VisibleController::class,'edit'])->middleware(['auth'])->name('User.edit');
+Route::PUT('/update user/{id}',[VisibleController::class,'update'])->middleware(['auth'])->name('User.update');
+// 
+
 
 Route::get('/userlogin',function()
 {
